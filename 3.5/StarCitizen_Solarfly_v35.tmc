@@ -61,8 +61,10 @@ int main()
     sc_set_throttle_norm();  // &Throttle, THR_RIGHT
 
 	//SetSCurve(&Throttle, SCX, 0, 50, 0, -8, -10);
-    MapAxis(&Throttle, SCX, 0, AXIS_NORMAL, MAP_RELATIVE);
-	MapAxis(&Throttle, SCY, 0, AXIS_NORMAL, MAP_ABSOLUTE);
+    MapAxis(&Throttle, SCX, DX_XROT_AXIS, AXIS_NORMAL, MAP_ABSOLUTE);
+	MapAxis(&Throttle, SCY, DX_YROT_AXIS, AXIS_REVERSED, MAP_ABSOLUTE);
+//    MapAxis(&Throttle, SCX, 0, AXIS_NORMAL, MAP_RELATIVE);
+//	MapAxis(&Throttle, SCY, 0, AXIS_NORMAL, MAP_ABSOLUTE);
 	//SetSCurve(&Throttle, SCY, 0, 0, 0, 0, 0);
 
     // =======================================================================================
@@ -208,6 +210,7 @@ int main()
 	MapKeyR(&Throttle, SPDF, EXEC("sc_brake_burnR();"));
 	MapKey(&Throttle, SPDB, v_afterburner); //3.5
 	MapKeyR(&Throttle, SPDB, v_boost); //3.5
+	MapKey(&Throttle, SC, v_boost); // Boost for strafe
 	//MapKey(&Throttle, SPDB, EXEC("sc_boost_burn();"));  // This is some seriously awesome voodoo magic, thank you
 	//MapKeyR(&Throttle, SPDB, EXEC("sc_boost_burnR();"));
 	MapKey(&Throttle, BSB, EXEC("sc_set_decoupling();"));  // Decouple
@@ -233,7 +236,7 @@ int main()
     MapKeyR(&Throttle, FLAPD, EXEC("sc_set_joystick_curves();"));
     
     // View Modes
-    MapKey(&Throttle, SC, v_view_look_behind); // Look Behind    
+    //MapKey(&Throttle, SC, v_view_look_behind); // Look Behind    
     //MapKey(&Throttle, EOLMOTOR, 0);
     //MapKeyR(&Throttle, EOLMOTOR, 0);
 
